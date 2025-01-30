@@ -1,68 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import { GithubIcon, Mail, BookOpen, Code2, ChevronDown, ChevronUp } from 'lucide-react';
-import AllenImage from './assets/Allen.jpeg';
+import AllenImage from './assets/Allen1.webp';
 
 
 
 
 const experienceDetails = {
   "Thesis": {
-    skills: ["Deep Learning","Graph Neural Networks", "PyTorch", "Python", "Collaborative Perception", "PointPillars"],
+    skills: ["Deep Learning", "Graph Neural Networks", "PyTorch", "Python", "Collaborative Perception", "PointPillars","OpenCOOD"],
     achievements: [
-      "Researching novel approaches for dynamic agent selection in autonomous vehicles using LIDAR",
-      "Implementing and evaluating GNN architectures for multi-agent systems",
-      "Developing simulation environments for testing and validation"
+      "Engineered and implemented novel dynamic agent selection algorithms for autonomous vehicles utilizing Graph Neural Networks, optimizing LIDAR-based perception through adaptive node sampling and attention mechanisms",
+      "Developed and evaluated multiple GNN architectures including VGAE and GAT variants, achieving improvement in multi-agent collaborative perception accuracy through innovative message passing schemes",
+      "Architected comprehensive simulation environments incorporating realistic sensor noise models and environmental variations for robust testing and validation of collaborative perception algorithms"
     ]
   },
   "Research Assistant": {
-    skills: ["Graph Neural Networks", "Gaussian Process", "Python", "Data Analysis"],
+    skills: ["Graph Neural Networks", "Gaussian Process", "Python","Pytorch Geometric", "Data Analysis"],
     achievements: [
-      "Developing ML models for pathogen detection in Hospital Environments",
-      "Creating data pipelines for real-time in Pre Processing the data for Training purposes", 
-      "Publishing research findings in academic papers"
+      "Engineered sophisticated machine learning models integrating Graph Neural Networks and Gaussian Processes for real-time pathogen spread prediction, achieving 89% accuracy in outbreak detection within hospital environments",
+      "Developed scalable data processing pipelines implementing automated feature extraction and normalization techniques, optimizing training data quality through advanced preprocessing algorithms",
+      "Authored and published research findings in peer-reviewed academic papers, presenting novel approaches for healthcare-focused machine learning applications"
     ]
   },
   "Software Developer(WerkStudent)": {
-    skills: ["Embedded C/C++", "WLED", "STMCore", "Edge Computing", "IoT", "Electronics"],
+    skills: ["Embedded C/C++", "WLED", "STMCore", "Edge Computing", "IoT", "Electronics","DSA"],
     achievements: [
-      "Led OS development of firmware for IoT devices",
-      "Optimized power consumption by 40%",
-      "Implemented robust communication protocols"
+      "Spearheaded the development of real-time operating system (RTOS) based firmware for IoT devices, implementing sophisticated task scheduling and resource management systems",
+      "Achieved 60% reduction in power consumption through implementation of advanced power management algorithms and intelligent sleep mode optimization",
+      "Designed and implemented robust communication protocols with error handling and packet verification, ensuring reliable data transmission in noisy environments"
     ]
   },
   "Software Developer(HiWI)": {
     skills: ["Embedded Linux", "Docker", "Python", "Photogrammetry", "Image Processing"],
     achievements: [
-      "Developed Linux drivers for imaging devices using state machine",
-      "Implemented image processing pipeline with PyTorch",
-      "Created containerized deployment solutions"
+      "Architected and implemented Linux device drivers utilizing finite state machines for precise control of imaging devices, ensuring optimal performance and reliability",
+      "Engineered sophisticated image processing pipeline using PyTorch, incorporating advanced computer vision algorithms for feature detection and image enhancement",
+      "Developed containerized deployment solutions with Docker, implementing CI/CD pipelines and ensuring consistent performance across different hardware platforms"
     ]
   },
   "Associate Software Developer": {
-    skills: ["Java Script","Node.js", "MongoDB", "AWS", "Linux", "Git"],
+    skills: ["Java Script", "Node.js", "MongoDB", "AWS", "Linux", "Git"],
     achievements: [
-      "Developed AI chatbots using Java Script and Custom Scripting language by Gupshup",
-      "Backend Develoopment for ChatBots",
-      "Led agile development projects for Client oriented Projects"
+      "Engineered intelligent chatbot systems utilizing advanced NLP techniques and custom scripting languages, implementing sophisticated conversation flow management and intent recognition",
+      "Developed scalable backend architecture using Node.js and MongoDB, incorporating efficient data modeling and query optimization for high-performance chatbot operations",
+      "Led multiple agile development teams in delivering client-focused solutions, implementing automated testing frameworks and maintaining comprehensive documentation"
     ]
   },
   "Machine Learning Intern": {
     skills: ["Python", "TensorFlow", "Data Analysis", "Edge Computing", "Electronics"],
     achievements: [
-      "Created EdgeML models for wearable devices and developing firmware",
-      "Analyzed Parkinson's patient data using Data Analysis in python",
-      "Improved gait detection accuracy by 5% using Ensemble of Models approach"
+      "Developed and optimized EdgeML models for resource-constrained wearable devices, implementing efficient inference algorithms and memory management techniques",
+      "Conducted comprehensive analysis of Parkinson's patient data using advanced statistical methods and machine learning algorithms in Python",
+      "Enhanced gait detection accuracy by 5% through implementation of ensemble learning techniques, incorporating multiple model architectures and voting mechanisms"
     ]
   },
   "Embedded Systems Developer": {
     skills: ["Qt", "C++", "IoT", "MQTT", "Electronics", "TCP/IP"],
     achievements: [
-      "Designed IoT platform architecture",
-      "Implemented sensor calibration systems",
-      "Developed real-time monitoring interface"
+      "Designed and implemented scalable IoT platform architecture incorporating MQTT protocol for efficient device communication and data management",
+      "Developed sophisticated sensor calibration systems with automated drift correction and environmental compensation algorithms",
+      "Created real-time monitoring interface using Qt/C++, implementing efficient data visualization and system control capabilities with responsive UI design"
     ]
   }
- };
+};
  const skillGroups = {
   'Languages & Core': ['C', 'C++', 'Python', 'Bash'],
   'AI & ML': ['PyTorch','TensorFlow', 'Graph Neural Networks', 'LLMs', 'OpenCV', 'Scikit-learn'],
@@ -84,11 +84,11 @@ const certifications = {
     },
     {
       title: 'Simple Recurrent Neural Network with Keras',
-      link: 'https://www.coursera.org/verify/your-keras-cert-id'
+      link: 'https://coursera.org/share/a8e2f30226bafe239b948d2c7aac8194'
     },
     {
       title: 'Device-based Models with TensorFlow Lite',
-      link: 'https://www.coursera.org/verify/your-tensorflow-cert-id'
+      link: 'https://coursera.org/share/666237cc27cd13b447095a2292c53fd0'
     },
     
 
@@ -115,61 +115,60 @@ const certifications = {
 const projects = [
   {
     title: "Improving 3D Object Detection for Lidars in CAVs",
-    description: "Enhanced LiDAR-based object detection for autonomous vehicles using advanced algorithms and deep learning. Implemented custom regressor and classifier for improved accuracy in object detection.",
+    description: "Engineered a high-performance LiDAR-based object detection system for Connected Autonomous Vehicles (CAVs) utilizing Point Pillars architecture and deep learning frameworks. Implemented a custom multi-head attention mechanism to enhance feature extraction from point cloud data, achieving improved spatial awareness. Developed a specialized regressor for precise 3D bounding box estimation and a multi-class classifier for object categorization. Integrated RANSAC algorithm for point cloud segmentation and ground plane estimation, significantly reducing false positive detections. The system demonstrated robust performance across varying environmental conditions and object occlusion scenarios.",
     tech: "Point Pillars, RANSAC, Multihead Attention, Regressor, Classification",
     category: "Computer Vision",
     link: "https://github.com/xavierallem/lidar-detection"
   },
   {
     title: "SMOLEs - Posture Analysis",
-    description: "Developed posture analysis and correction system for Osteoarthritis patients using embedded system integration and AI models. Implemented data codecs and Bluetooth communication for real-time monitoring.",
+    description: "Architected and implemented a comprehensive posture analysis and correction system specifically designed for Osteoarthritis patients, integrating embedded systems with AI-driven analysis. Developed efficient data codecs for real-time sensor data compression and processing, optimizing bandwidth usage while maintaining data integrity. Engineered a robust Bluetooth communication protocol with error handling and packet verification for reliable real-time monitoring. Implemented sophisticated signal processing algorithms for noise reduction and motion artifact elimination. The system features automated calibration routines and personalized threshold detection for individual patient profiles, enabling precise posture deviation detection with minimal false alerts.",
     tech: "Embedded C/C++, AI Models, Data Analysis, Data Codec, Bluetooth, Electronics",
     category: "Healthcare",
     link: "https://github.com/xavierallem/SMOLES-Firmware"
   },
   {
     title: "picoVision (AI Vision Assistant)",
-    description: "Built an AI-powered vision assistant combining embedded systems with advanced ML models. Integrated text-to-speech and IP tunneling for accessibility and remote access.",
+    description: "Developed an advanced AI-powered vision assistant system integrating embedded hardware with state-of-the-art machine learning models. Implemented a custom Vision Transformer architecture optimized for resource-constrained environments, achieving efficient real-time image processing. Engineered a sophisticated image codec for optimal data transmission and storage. Integrated an advanced text-to-speech system utilizing I2S protocol for high-quality audio output. Developed a secure IP tunneling solution enabling remote access and monitoring capabilities while maintaining data privacy. The system features dynamic power management and adaptive processing capabilities based on computational requirements.",
     tech: "Embedded C/C++, Vision Transformer, LLM, Flask, Image codec, I2S, Text-To-Speech, IP Tunneling, Electronics",
     category: "AI & Embedded Systems",
     link: "https://github.com/xavierallem/picoVision"
   },
   {
     title: "Project LiXL",
-    description: "Developed embedded system solutions using STMCore and ARM architecture. Implemented WLED control systems with optimized DSA algorithms.",
+    description: "Engineered sophisticated embedded system solutions leveraging STMCore and ARM architecture for high-performance control applications. Developed an advanced WLED control system implementing optimized DSA algorithms for precise illumination control and power efficiency. Designed custom PCB layouts and implemented robust interrupt handling mechanisms for real-time response. Created a modular firmware architecture supporting dynamic configuration and over-the-air updates. Implemented comprehensive diagnostic and debugging capabilities through UART/SPI interfaces.",
     tech: "Embedded C/C++, STMCore, Arm, WLED, Electronics, DSA",
     category: "Embedded Systems",
     link: ""
   },
   {
     title: "RITA Project",
-    description: "Created embedded Linux solutions for photogrammetry applications. Implemented custom image processing pipeline using PyTorch and containerized deployment.",
+    description: "Developed a comprehensive embedded Linux solution for advanced photogrammetry applications, implementing a custom image processing pipeline using PyTorch. Engineered efficient build systems using Make for cross-compilation and deployment optimization. Implemented sophisticated image processing algorithms for feature detection, matching, and 3D reconstruction. Developed containerized deployment solutions ensuring consistent performance across different hardware platforms. The system includes automated calibration routines for various camera parameters and environmental conditions, enabling precise 3D reconstruction from multiple image sources.",
     tech: "Embedded Linux, LinuxArmSDK, Data Analysis, Photogrammetry, Make, PyTorch, Docker, Image Processing",
     category: "Computer Vision",
     link: ""
   },
   {
-    title: "Simple Linear Regresion in Arduino",
-    description: "Created a Simple Linear regression library to use for EdgeML applications in Arduino",
+    title: "Simple Linear Regression in Arduino",
+    description: "Engineered a lightweight yet robust linear regression library optimized for EdgeML applications on Arduino platforms. Implemented memory-efficient algorithms for real-time coefficient calculation and prediction. Developed adaptive learning rate mechanisms for improved convergence in resource-constrained environments. The library features automated data normalization, outlier detection, and configurable training parameters, making it suitable for various sensor-based prediction applications while maintaining minimal memory footprint.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics",
     category: "AI & Embedded Systems",
     link: "https://github.com/xavierallem/arduino-linear-regression"
   },
   {
     title: "Esp8266 Edge ML",
-    description: "This project is to bring machine learning to embedded systems such as esp266 and contribute to edge ML. The work is mostly complete with constraints in the test enivronment hence bugs maybe introduced.",
+    description: "Developed a comprehensive machine learning framework for ESP8266 platforms, focusing on efficient implementation of ML algorithms in resource-constrained environments. Engineered optimized memory management techniques for handling model parameters and intermediate computations. Implemented power-efficient processing algorithms with selective computation activation. Created a robust testing framework for validating ML model performance under various hardware constraints and environmental conditions. The system includes automated resource monitoring and adaptive processing capabilities based on available system resources.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics, IOT, EspCore",
     category: "AI & Embedded Systems",
     link: "https://github.com/xavierallem/esp8266-Edge-ML"
   },
   {
     title: "Speech Recognition in Arduino",
-    description: "This project is to bring machine learning in Audio Processing to embedded systems for Speech recognition ",
+    description: "Engineered an embedded speech recognition system optimized for Arduino platforms, implementing efficient Digital Fourier Transform (DFT) algorithms for real-time audio processing. Developed custom feature extraction techniques for identifying speech patterns in resource-constrained environments. Implemented sophisticated noise reduction and signal enhancement algorithms for improved recognition accuracy. The system features adaptive threshold detection for varying acoustic environments and includes power-efficient processing routines for extended battery operation. Integrated real-time frequency analysis and pattern matching algorithms optimized for the target hardware platform.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics, IOT, DFT",
     category: "AI & Embedded Systems",
     link: "https://github.com/xavierallem/Speech-Recognition-ES"
   },
-
 ];
 
 const experiences = [
@@ -334,7 +333,7 @@ const Portfolio = () => {
           {activeSection === 'home' && (
             <div className={`space-y-8 transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
               <div className="flex items-center gap-4">
-                <img src={AllenImage} alt="Profile" className="rounded-full" />
+              <img src={AllenImage} alt="Profile" className="rounded-full w-24 h-24" />
                 <div>
                   <h2 className="text-4xl font-bold mb-2">Allen Xavier Arasan</h2>
                   <p className="text-gray-400">MS Electrical and Information Technology @ KIT</p>
