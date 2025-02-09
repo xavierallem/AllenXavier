@@ -67,7 +67,7 @@ const experienceDetails = {
   'Languages & Core': ['C', 'C++', 'Python', 'Bash'],
   'AI & ML': ['PyTorch','TensorFlow', 'Graph Neural Networks', 'LLMs', 'OpenCV', 'Scikit-learn'],
   'Web & Cloud': ['HTML', 'Node.js', 'MySQL', 'MongoDB', 'GCP', 'AWS'],
-  'Tools': ['MATLAB', 'Jenkins', 'Docker', 'Linux', 'Git'],
+  'Tools': ['MATLAB','CARLA', 'Jenkins', 'Docker', 'Linux', 'Git'],
   'Embedded Systems': ['MQTT', 'IoT', 'MODBUS','ROS', 'FreeRTOS', 'UOS', 'TCP/IP', 'Edge Computing', 'MCU', 'Signals', 'Modulation', 'Electronics', 'Communication Protocols']
 };
 const certifications = {
@@ -97,6 +97,10 @@ const certifications = {
     {
       title: 'Development of Secure Embedded Systems',
       link: 'https://coursera.org/share/9eb36d8acf114012c971a12f81b7e3ef'
+    },
+    {
+      title: 'Introduction to Self-Driving Cars',
+      link: 'https://coursera.org/share/442ac5e7a30cf7bf6744fa7c107e2a6a'
     }
   ],
   'Google Cloud': [
