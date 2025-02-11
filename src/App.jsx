@@ -101,6 +101,10 @@ const certifications = {
     {
       title: 'Introduction to Self-Driving Cars',
       link: 'https://coursera.org/share/442ac5e7a30cf7bf6744fa7c107e2a6a'
+    },
+    {
+      title: 'State Estimation and Localization for Self-Driving Cars',
+      link: 'https://coursera.org/share/df908ef3df46a349f007dda8c9e642eb'
     }
   ],
   'Google Cloud': [
