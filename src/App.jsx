@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GithubIcon, Mail, BookOpen, Code2, ChevronDown, ChevronUp } from 'lucide-react';
+import { GithubIcon, Mail, BookOpen, Code2, ChevronDown, ChevronUp, Menu, X } from 'lucide-react';
 import AllenImage from './assets/Allen1.webp';
 
 
@@ -17,7 +17,7 @@ const experienceDetails = {
   "Research Assistant": {
     skills: ["Graph Neural Networks", "Gaussian Process", "Python","Pytorch Geometric", "Data Analysis"],
     achievements: [
-      "Engineered sophisticated machine learning models integrating Graph Neural Networks and Gaussian Processes for real-time pathogen spread prediction, achieving 89% accuracy in outbreak detection within hospital environments",
+      "Engineered sophisticated machine learning models integrating Graph Neural Networks and Gaussian Processes for real-time pathogen spread prediction in project <strong><u><a href='https://pathobot.de' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Pathobot</a></u></strong>, achieving 89% accuracy in outbreak detection within hospital environments",
       "Developed scalable data processing pipelines implementing automated feature extraction and normalization techniques, optimizing training data quality through advanced preprocessing algorithms",
       "Authored and published research findings in peer-reviewed academic papers, presenting novel approaches for healthcare-focused machine learning applications"
     ]
@@ -25,7 +25,7 @@ const experienceDetails = {
   "Software Developer(WerkStudent)": {
     skills: ["Embedded C/C++", "WLED", "STMCore", "Edge Computing", "IoT", "Electronics","DSA"],
     achievements: [
-      "Spearheaded the development of real-time operating system (RTOS) based firmware for IoT devices, implementing sophisticated task scheduling and resource management systems",
+      "Spearheaded the development of real-time operating system (RTOS) based firmware for IoT devices mainly <strong><u><a href='https://lixl.io/?srsltid=AfmBOorbUx3tDdYJnHNM6E1GZHuD7gdtg6R9l8YjMl4UfjQsZCtE8EuL' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Lixl Aura</a></u></strong> and <strong><u><a href='https://www.leetdesk.com/de?utm_source=google&utm_medium=cpc&utm_campaign=7153283942&utm_content=79909882306&utm_term=leetdesk&tmsrc=googlead&tmcid=7153283942&tmsid=79909882306&tmid=490543458406&tmkw=leetdesk&gad_source=1&gbraid=0AAAAApp9bVc3IUJxP3FYBmkCTS0YDFjfR&gclid=Cj0KCQiA_NC9BhCkARIsABSnSTZe7vXmAeoTS_tJ3ht0jcqQvfVSmD0-VNWkaaBO_Oey86DdzIIjaqQaAtbqEALw_wcB' target='_blank' rel='noopener noreferrer' style='color: inherit;'>LeetDesk</a></u></strong>, implementing sophisticated task scheduling and resource management systems",
       "Achieved 60% reduction in power consumption through implementation of advanced power management algorithms and intelligent sleep mode optimization",
       "Designed and implemented robust communication protocols with error handling and packet verification, ensuring reliable data transmission in noisy environments"
     ]
@@ -67,7 +67,7 @@ const experienceDetails = {
   'Languages & Core': ['C', 'C++', 'Python', 'Bash'],
   'AI & ML': ['PyTorch','TensorFlow', 'Graph Neural Networks', 'LLMs', 'OpenCV', 'Scikit-learn'],
   'Web & Cloud': ['HTML', 'Node.js', 'MySQL', 'MongoDB', 'GCP', 'AWS'],
-  'Tools': ['MATLAB','CARLA', 'Jenkins', 'Docker', 'Linux', 'Git'],
+  'Tools': ['CARLA', 'Jenkins', 'Docker', 'Linux', 'Git'],
   'Embedded Systems': ['MQTT', 'IoT', 'MODBUS','ROS', 'FreeRTOS', 'UOS', 'TCP/IP', 'Edge Computing', 'MCU', 'Signals', 'Modulation', 'Electronics', 'Communication Protocols']
 };
 const certifications = {
@@ -105,6 +105,10 @@ const certifications = {
     {
       title: 'State Estimation and Localization for Self-Driving Cars',
       link: 'https://coursera.org/share/df908ef3df46a349f007dda8c9e642eb'
+    },
+    {
+      title: 'Motion Planning for Self-Driving Cars',
+      link: 'https://coursera.org/share/753e7ab694eda7e3c7975ffb31bd1684'
     }
   ],
   'Google Cloud': [
@@ -224,7 +228,7 @@ const experiences = [
   }
 ];
 
- const ExperienceCard = ({ exp, index, isVisible }) => {
+const ExperienceCard = ({ exp, index, isVisible }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
   return (
@@ -287,7 +291,7 @@ const experiences = [
                   <ul className="list-disc list-inside space-y-1">
                     {experienceDetails[exp.title].achievements.map((achievement) => (
                       <li key={achievement} className="text-sm text-gray-300">
-                        {achievement}
+                        <span dangerouslySetInnerHTML={{ __html: achievement }} />
                       </li>
                     ))}
                   </ul>
@@ -306,21 +310,29 @@ const experiences = [
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isVisible, setIsVisible] = useState(false);
-
-
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  // Function to close mobile menu after selecting a section
+  const handleSectionClick = (section) => {
+    setActiveSection(section);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
+      {/* Responsive Navigation */}
       <nav className="fixed top-0 w-full bg-gray-800/95 backdrop-blur-sm p-4 z-50">
         <div className="flex justify-between items-center max-w-6xl mx-auto">
-          <h1 className={`text-2xl font-bold transition-all duration-500 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
+          <h1 className={`text-xl sm:text-2xl font-bold transition-all duration-500 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
             Allen Xavier
           </h1>
-          <div className="flex gap-4">
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-4">
             {['home', 'experience', 'projects', 'publications'].map((section) => (
               <button
                 key={section}
@@ -333,85 +345,110 @@ const Portfolio = () => {
               </button>
             ))}
           </div>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            className="md:hidden text-white focus:outline-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? 
+              <X className="w-6 h-6" /> : 
+              <Menu className="w-6 h-6" />
+            }
+          </button>
         </div>
+        
+        {/* Mobile Navigation Overlay */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 w-full bg-gray-800 py-2 px-4 shadow-lg">
+            {['home', 'experience', 'projects', 'publications'].map((section) => (
+              <button
+                key={section}
+                onClick={() => handleSectionClick(section)}
+                className={`block w-full text-left px-4 py-3 rounded transition-all duration-300 ${
+                  activeSection === section ? 'bg-blue-600' : 'hover:bg-gray-700'
+                }`}
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            ))}
+          </div>
+        )}
       </nav>
 
-      <main className="pt-20 px-4 pb-12">
+      <main className="pt-24 px-4 pb-12">
         <div className="max-w-6xl mx-auto">
           {activeSection === 'home' && (
             <div className={`space-y-8 transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-              <div className="flex items-center gap-4">
-              <img src={AllenImage} alt="Profile" className="rounded-full w-24 h-24" />
-                <div>
-                  <h2 className="text-4xl font-bold mb-2">Allen Xavier Arasan</h2>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <img src={AllenImage} alt="Profile" className="rounded-full w-20 h-20 sm:w-24 sm:h-24" />
+                <div className="text-center sm:text-left">
+                  <h2 className="text-3xl sm:text-4xl font-bold mb-2">Allen Xavier Arasan</h2>
                   <p className="text-gray-400">MS Electrical and Information Technology @ KIT</p>
                 </div>
               </div>
               
               <div className="prose prose-invert max-w-none">
-                <p className="text-lg leading-relaxed">
+                <p className="text-base sm:text-lg leading-relaxed">
                   Hey there! 👋 I'm that rare breed of developer who makes machines talk to each other while occasionally talking to humans too. Currently mastering the art of making robots play nice at KIT, Germany, when I'm not debugging my coffee machine's firmware.
                 </p>
                 
-                <p className="text-lg leading-relaxed mt-4">
+                <p className="text-base sm:text-lg leading-relaxed mt-4">
                   From crafting AI chatbots at Gupshup to helping Parkinson's patients with ML at Life Spark, I've worn many hats - though my favorite is my debugging hat (it has LED strips). Currently, I'm diving deep into Graph Neural Networks for autonomous vehicles at FZI, because apparently teaching cars to drive is easier than teaching humans to use turn signals.
                 </p>
 
                 <div className="mt-8">
-                  <h3 className="text-2xl font-bold mb-4">Skills & Technologies</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">Skills & Technologies</h3>
+                  <div className="grid grid-cols-1 gap-4">
                     {Object.entries(skillGroups).map(([category, skills]) => (
                       <div key={category} className="bg-gray-800/50 p-4 rounded-lg">
                         <h4 className="text-blue-400 font-semibold mb-2">{category}</h4>
                         <div className="flex flex-wrap gap-2">
                           {skills.map(skill => (
-                            <span key={skill} className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 hover:bg-blue-500/20 transition-colors">
+                            <span key={skill} className="px-2 py-1 bg-gray-700 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-blue-500/20 transition-colors">
                               {skill}
                             </span>
                           ))}
                         </div>
                       </div>
                     ))}
-                    
                   </div>
                 </div>
+                
                 <div className="mt-8">
-                  <h3 className="text-2xl font-bold mb-4">Certifications</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {Object.entries(certifications).map(([category, skills]) => (
-                    <div key={category} className="bg-gray-800/50 p-4 rounded-lg">
-                      <h4 className="text-blue-400 font-semibold mb-2">{category}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.map(cert => (
-                          cert.link ? (
-                            
-                            <a
-                              key={cert.title}
-                              href={cert.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 hover:text-blue-400 hover:bg-blue-500/20 transition-colors cursor-pointer"
-                            >
-                              {cert.title}
-                            </a>
-                          ) : (
-                            <span
-                              key={cert.title}
-                              className="px-3 py-1 bg-gray-700 rounded-full text-sm text-gray-300 hover:bg-blue-500/20 transition-colors"
-                            >
-                              {cert.title}
-                            </span>
-                          )
-                        ))}
+                  <h3 className="text-xl sm:text-2xl font-bold mb-4">Certifications</h3>
+                  <div className="grid grid-cols-1 gap-4">
+                    {Object.entries(certifications).map(([category, skills]) => (
+                      <div key={category} className="bg-gray-800/50 p-4 rounded-lg">
+                        <h4 className="text-blue-400 font-semibold mb-2">{category}</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {skills.map(cert => (
+                            cert.link ? (
+                              <a
+                                key={cert.title}
+                                href={cert.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-2 py-1 bg-gray-700 rounded-full text-xs sm:text-sm text-gray-300 hover:text-blue-400 hover:bg-blue-500/20 transition-colors cursor-pointer"
+                              >
+                                {cert.title}
+                              </a>
+                            ) : (
+                              <span
+                                key={cert.title}
+                                className="px-2 py-1 bg-gray-700 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-blue-500/20 transition-colors"
+                              >
+                                {cert.title}
+                              </span>
+                            )
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-
-                    
+                    ))}
                   </div>
                 </div>
 
-                <div className="flex gap-4 mt-6">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-4 mt-6">
                   <a href="https://github.com/xavierallem" className="flex items-center gap-2 px-4 py-2 bg-gray-800 rounded hover:bg-gray-700 transition-colors">
                     <GithubIcon className="w-5 h-5" />
                     GitHub
@@ -425,50 +462,50 @@ const Portfolio = () => {
             </div>
           )}
 
-{activeSection === 'experience' && (
-    <div className="relative">
-      <div className="absolute left-8 top-0 w-1 h-full bg-blue-500/20 rounded-full" />
-      <div className="space-y-12 relative">
-        {experiences.map((exp, index) => (
-          <ExperienceCard
-            key={exp.title + exp.company}
-            exp={exp}
-            index={index}
-            isVisible={isVisible}
-          />
-        ))}
-      </div>
-    </div>
-  )}
+          {activeSection === 'experience' && (
+            <div className="relative">
+              <div className="absolute left-3 sm:left-8 top-0 w-1 h-full bg-blue-500/20 rounded-full" />
+              <div className="space-y-8 sm:space-y-12 relative">
+                {experiences.map((exp, index) => (
+                  <ExperienceCardResponsive
+                    key={exp.title + exp.company}
+                    exp={exp}
+                    index={index}
+                    isVisible={isVisible}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
 
           {activeSection === 'projects' && (
             <div className="grid grid-cols-1 gap-6">
               {projects.map((project, index) => (
                 <div
                   key={project.title}
-                  className={`bg-gray-800 p-6 rounded-lg transform transition-all duration-500 hover:scale-[1.02] ${
+                  className={`bg-gray-800 p-4 sm:p-6 rounded-lg transform transition-all duration-500 hover:translate-y-px ${
                     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-blue-400 mb-2">{project.title}</h3>
-                      <span className="inline-block px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm mb-4">
+                      <h3 className="text-lg sm:text-xl font-bold text-blue-400 mb-2">{project.title}</h3>
+                      <span className="inline-block px-2 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs sm:text-sm mb-4">
                         {project.category}
                       </span>
                     </div>
                     {project.link && (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" 
                          className="text-gray-400 hover:text-blue-400 transition-colors">
-                        <GithubIcon className="w-6 h-6" />
+                        <GithubIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                       </a>
                     )}
                   </div>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <p className="text-sm sm:text-base text-gray-300 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.split(', ').map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-gray-700 rounded-md text-sm text-gray-300">
+                      <span key={tech} className="px-2 py-1 bg-gray-700 rounded-md text-xs sm:text-sm text-gray-300">
                         {tech}
                       </span>
                     ))}
@@ -480,20 +517,20 @@ const Portfolio = () => {
 
           {activeSection === 'publications' && (
             <div className={`space-y-6 transition-all duration-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-              <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-all">
-                <BookOpen className="w-8 h-8 mb-4 text-blue-500" />
-                <h3 className="text-xl font-bold mb-2">Unknown Terrain modelling using 3D mapping</h3>
-                <p className="text-gray-400 mb-4">5th International Conference on Computing Methodologies and Communication Computing Methodologies 2021</p>
+              <div className="bg-gray-800 p-4 sm:p-6 rounded-lg hover:bg-gray-700 transition-all">
+                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 mb-3 sm:mb-4 text-blue-500" />
+                <h3 className="text-lg sm:text-xl font-bold mb-2">Unknown Terrain modelling using 3D mapping</h3>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">5th International Conference on Computing Methodologies and Communication Computing Methodologies 2021</p>
                 <a href="https://ieeexplore.ieee.org/abstract/document/9418346" 
                    className="text-blue-400 hover:text-blue-300 flex items-center gap-2">
                   View Paper
                   <Mail className="w-4 h-4" />
                 </a>
               </div>
-              <div className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-all">
-                <BookOpen className="w-8 h-8 mb-4 text-blue-500" />
-                <h3 className="text-xl font-bold mb-2">Patient Monitoring & Assisting System</h3>
-                <p className="text-gray-400 mb-4">IEEE International Conference on Computational Science and Technology 2022</p>
+              <div className="bg-gray-800 p-4 sm:p-6 rounded-lg hover:bg-gray-700 transition-all">
+                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 mb-3 sm:mb-4 text-blue-500" />
+                <h3 className="text-lg sm:text-xl font-bold mb-2">Patient Monitoring & Assisting System</h3>
+                <p className="text-sm sm:text-base text-gray-400 mb-4">IEEE International Conference on Computational Science and Technology 2022</p>
                 <a href="https://ieeexplore.ieee.org/abstract/document/10040443"
                    className="text-blue-400 hover:text-blue-300 flex items-center gap-2">
                   View Paper
@@ -504,6 +541,84 @@ const Portfolio = () => {
           )}
         </div>
       </main>
+    </div>
+  );
+};
+
+// Responsive Experience Card Component
+const ExperienceCardResponsive = ({ exp, index, isVisible }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  return (
+    <div 
+      className="relative pl-8 sm:pl-20 transition-transform cursor-pointer"
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <div 
+        className={`absolute left-3 sm:left-7 w-3 h-3 bg-blue-500 rounded-full transform transition-all duration-500 ${
+          isVisible ? 'scale-100' : 'scale-0'
+        }`}
+        style={{ 
+          top: '50%',
+          marginTop: '-6px',
+          transitionDelay: `${index * 200}ms`,
+        }}
+      />
+      <div
+        className={`bg-gray-800 p-4 sm:p-6 rounded-lg transform transition-all duration-500 hover:bg-gray-700 ${
+          isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
+        }`}
+        style={{ transitionDelay: `${index * 200 + 100}ms` }}
+      >
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2">
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-lg sm:text-xl font-bold text-blue-400 transition-colors">{exp.title}</h3>
+              {isExpanded ? 
+                <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" /> : 
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
+              }
+            </div>
+            <p className="text-sm sm:text-base text-blue-400">{exp.company}</p>
+          </div>
+          <span className="text-xs sm:text-sm text-gray-400">{exp.date}</span>
+        </div>
+        <p className="text-sm sm:text-base text-gray-300">{exp.description}</p>
+        
+        <div className={`mt-4 space-y-3 overflow-hidden transition-all duration-300 ${
+          isExpanded ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="border-t border-gray-700 pt-4">
+            {experienceDetails[exp.title] && (
+              <>
+                <div className="mb-4">
+                  <h4 className="font-semibold text-blue-400 mb-2 text-sm sm:text-base">Skills & Technologies</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {experienceDetails[exp.title].skills.map((skill) => (
+                      <span 
+                        key={skill} 
+                        className="px-2 py-1 bg-gray-900 rounded text-xs sm:text-sm text-gray-300 hover:bg-blue-500/20"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-blue-400 mb-2 text-sm sm:text-base">Key Achievements</h4>
+                  <ul className="list-disc list-inside space-y-1">
+                    {experienceDetails[exp.title].achievements.map((achievement) => (
+                      <li key={achievement} className="text-xs sm:text-sm text-gray-300">
+                        <span dangerouslySetInnerHTML={{ __html: achievement }} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
