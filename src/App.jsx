@@ -348,56 +348,64 @@ const projects = [
     description: "Engineered a high-performance LiDAR-based object detection system for Connected Autonomous Vehicles (CAVs) utilizing Point Pillars architecture and deep learning frameworks. Implemented a custom multi-head attention mechanism to enhance feature extraction from point cloud data, achieving improved spatial awareness. Developed a specialized regressor for precise 3D bounding box estimation and a multi-class classifier for object categorization. Integrated RANSAC algorithm for point cloud segmentation and ground plane estimation, significantly reducing false positive detections. The system demonstrated robust performance across varying environmental conditions and object occlusion scenarios.",
     tech: "Point Pillars, RANSAC, Multihead Attention, Regressor, Classification",
     category: "Computer Vision",
-    link: "https://github.com/xavierallem/lidar-detection"
+    link: "https://github.com/xavierallem/lidar-detection",
+    gif: "https://media.giphy.com/media/3o7qDEq2bMbcbPRQ2c/giphy.gif" // 3D visualization gif
   },
   {
     title: "SMOLEs - Posture Analysis",
     description: "Architected and implemented a comprehensive posture analysis and correction system specifically designed for Osteoarthritis patients, integrating embedded systems with AI-driven analysis. Developed efficient data codecs for real-time sensor data compression and processing, optimizing bandwidth usage while maintaining data integrity. Engineered a robust Bluetooth communication protocol with error handling and packet verification for reliable real-time monitoring. Implemented sophisticated signal processing algorithms for noise reduction and motion artifact elimination. The system features automated calibration routines and personalized threshold detection for individual patient profiles, enabling precise posture deviation detection with minimal false alerts.",
     tech: "Embedded C/C++, AI Models, Data Analysis, Data Codec, Bluetooth, Electronics",
     category: "Healthcare",
-    link: "https://github.com/xavierallem/SMOLES-Firmware"
+    link: "https://github.com/xavierallem/SMOLES-Firmware",
+    gif: "https://media.giphy.com/media/xT9C25UNTwfZuk85WP/giphy.gif" // Healthcare/medical monitoring gif
   },
   {
     title: "picoVision (AI Vision Assistant)",
     description: "Developed an advanced AI-powered vision assistant system integrating embedded hardware with state-of-the-art machine learning models. Implemented a custom Vision Transformer architecture optimized for resource-constrained environments, achieving efficient real-time image processing. Engineered a sophisticated image codec for optimal data transmission and storage. Integrated an advanced text-to-speech system utilizing I2S protocol for high-quality audio output. Developed a secure IP tunneling solution enabling remote access and monitoring capabilities while maintaining data privacy. The system features dynamic power management and adaptive processing capabilities based on computational requirements.",
     tech: "Embedded C/C++, Vision Transformer, LLM, Flask, Image codec, I2S, Text-To-Speech, IP Tunneling, Electronics",
     category: "AI & Embedded Systems",
-    link: "https://github.com/xavierallem/picoVision"
+    link: "https://github.com/xavierallem/picoVision",
+    gif: "https://media.giphy.com/media/LaVp0AyqR5bGsC5Cbm/giphy.gif" // AI/computer vision gif
   },
   {
     title: "Project LiXL",
     description: "Engineered sophisticated embedded system solutions leveraging STMCore and ARM architecture for high-performance control applications. Developed an advanced WLED control system implementing optimized DSA algorithms for precise illumination control and power efficiency. Designed custom PCB layouts and implemented robust interrupt handling mechanisms for real-time response. Created a modular firmware architecture supporting dynamic configuration and over-the-air updates. Implemented comprehensive diagnostic and debugging capabilities through UART/SPI interfaces.",
     tech: "Embedded C/C++, STMCore, Arm, WLED, Electronics, DSA",
     category: "Embedded Systems",
-    link: ""
+    link: "",
+    gif: "https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" // LED/electronics gif
   },
   {
     title: "RITA Project",
     description: "Developed a comprehensive embedded Linux solution for advanced photogrammetry applications, implementing a custom image processing pipeline using PyTorch. Engineered efficient build systems using Make for cross-compilation and deployment optimization. Implemented sophisticated image processing algorithms for feature detection, matching, and 3D reconstruction. Developed containerized deployment solutions ensuring consistent performance across different hardware platforms. The system includes automated calibration routines for various camera parameters and environmental conditions, enabling precise 3D reconstruction from multiple image sources.",
     tech: "Embedded Linux, LinuxArmSDK, Data Analysis, Photogrammetry, Make, PyTorch, Docker, Image Processing",
     category: "Computer Vision",
-    link: ""
+    link: "",
+    gif: "https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif" // 3D reconstruction/photogrammetry gif
   },
   {
     title: "Simple Linear Regression in Arduino",
     description: "Engineered a lightweight yet robust linear regression library optimized for EdgeML applications on Arduino platforms. Implemented memory-efficient algorithms for real-time coefficient calculation and prediction. Developed adaptive learning rate mechanisms for improved convergence in resource-constrained environments. The library features automated data normalization, outlier detection, and configurable training parameters, making it suitable for various sensor-based prediction applications while maintaining minimal memory footprint.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics",
     category: "AI & Embedded Systems",
-    link: "https://github.com/xavierallem/arduino-linear-regression"
+    link: "https://github.com/xavierallem/arduino-linear-regression",
+    gif: "https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" // Data analysis/graphs gif
   },
   {
     title: "Esp8266 Edge ML",
     description: "Developed a comprehensive machine learning framework for ESP8266 platforms, focusing on efficient implementation of ML algorithms in resource-constrained environments. Engineered optimized memory management techniques for handling model parameters and intermediate computations. Implemented power-efficient processing algorithms with selective computation activation. Created a robust testing framework for validating ML model performance under various hardware constraints and environmental conditions. The system includes automated resource monitoring and adaptive processing capabilities based on available system resources.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics, IOT, EspCore",
     category: "AI & Embedded Systems",
-    link: "https://github.com/xavierallem/esp8266-Edge-ML"
+    link: "https://github.com/xavierallem/esp8266-Edge-ML",
+    gif: "https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/giphy.gif" // IoT/wireless communication gif
   },
   {
     title: "Speech Recognition in Arduino",
     description: "Engineered an embedded speech recognition system optimized for Arduino platforms, implementing efficient Digital Fourier Transform (DFT) algorithms for real-time audio processing. Developed custom feature extraction techniques for identifying speech patterns in resource-constrained environments. Implemented sophisticated noise reduction and signal enhancement algorithms for improved recognition accuracy. The system features adaptive threshold detection for varying acoustic environments and includes power-efficient processing routines for extended battery operation. Integrated real-time frequency analysis and pattern matching algorithms optimized for the target hardware platform.",
     tech: "Embedded Systems, Data Analysis, Arduino, EdgeML, Electronics, IOT, DFT",
     category: "AI & Embedded Systems",
-    link: "https://github.com/xavierallem/Speech-Recognition-ES"
+    link: "https://github.com/xavierallem/Speech-Recognition-ES",
+    gif: "https://media.giphy.com/media/3oEduNITi4dGMp7SdG/giphy.gif" // Audio/sound waves gif
   },
 ];
 
@@ -699,11 +707,23 @@ const Portfolio = () => {
               {projects.map((project, index) => (
                 <div
                   key={project.title}
-                  className={`bg-gray-800 p-4 sm:p-6 rounded-lg transform transition-all duration-500 hover:translate-y-px ${
+                  className={`bg-gray-800 p-4 sm:p-6 rounded-lg transform transition-all duration-500 hover:translate-y-px relative group overflow-hidden ${
                     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
+                  {/* GIF overlay that appears on hover */}
+                  {project.gif && (
+                    <div className="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                      <img 
+                        src={project.gif} 
+                        alt={`${project.title} demo`}
+                        className="max-w-full max-h-full rounded-lg object-contain"
+                        style={{ maxHeight: '400px', maxWidth: '600px' }}
+                      />
+                    </div>
+                  )}
+                  
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold text-blue-400 mb-2">{project.title}</h3>
@@ -713,7 +733,7 @@ const Portfolio = () => {
                     </div>
                     {project.link && (
                       <a href={project.link} target="_blank" rel="noopener noreferrer" 
-                         className="text-gray-400 hover:text-blue-400 transition-colors">
+                         className="text-gray-400 hover:text-blue-400 transition-colors z-20 relative">
                         <GithubIcon className="w-5 h-5 sm:w-6 sm:h-6" />
                       </a>
                     )}
