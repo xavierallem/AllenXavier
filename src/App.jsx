@@ -27,6 +27,19 @@ import Ollama from './assets/icons/ollama.png';
 import Iot from './assets/icons/IoT.png';
 import EdgeComputing from './assets/icons/edge-computing-2.png';
 import GraphNeuralNeetwork from './assets/icons/neural.png';
+import HTML from './assets/icons/HTML5.png';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import GCP from './assets/icons/Google Cloud.png';
+import MySQL from './assets/icons/MySQL.png'; 
+import HuggingFace from './assets/icons/hf-logo.png';
+import LangChainIcon from './assets/icons/langchain-color.svg';
+import n8nIcon from './assets/icons/n8n-color.png';
+import VectorDBIcon from './assets/icons/chroma.png';
+import PromptIcon from './assets/icons/prompt.png';
+import MultiModalIcon from './assets/icons/multimodal.png';
+import DataAnalysisIcon from './assets/icons/data-analysis.png';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 
 
 // Create a component for technology logos
@@ -62,6 +75,20 @@ const TechLogo = ({ name, isDarkMode }) => {
     'Graph Neural Networks': GraphNeuralNeetwork,
     'Computer Vision': OpenCVIcon,
     'Collaborative Perception': GraphNeuralNeetwork,
+    'HTML': HTML,
+    'MySQL': MySQL,
+    'GCP': GCP,
+    'Hugging Face': HuggingFace,
+    'Scikit-learn': ScikitLearnIcon,
+    'LangChain': LangChainIcon,
+    'n8n': n8nIcon,
+    'Vector Databases': VectorDBIcon,
+    'Prompt Engineering': PromptIcon,
+    'Multi-Modal LLM': MultiModalIcon,
+    'Data Analysis': DataAnalysisIcon
+
+  
+
   };
 
   const IconComponent = iconMap[name];
@@ -96,7 +123,7 @@ const experienceDetails = {
   ]
 },
   "Research Assistant": {
-    skills: ["LLMS","Ollama","RAG","LangChain","Graph Neural Networks", "Gaussian Process", "Python","Pytorch Geometric", "Data Analysis"],
+    skills: ["LLMS","Ollama","RAG","LangChain","Graph Neural Networks",  "Python","Pytorch Geometric", "Data Analysis"],
     achievements: [
       "Created Multi-Modal LLM processing pipeline for UX evaluation and data analysis",
       "Built GNN and Gaussian Process models for real-time pathogen prediction achieving 89% accuracy in <strong><u><a href='https://pathobot.de' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Pathobot</a></u></strong>",
@@ -153,12 +180,12 @@ const skillGroups = {
 
 const allSkillGroups = {
   'Languages & Core': ['C', 'C++', 'Python', 'JavaScript', 'Bash'],
-  'AI & ML': ['PyTorch', 'TensorFlow', 'Graph Neural Networks', 'Computer Vision', 'NLP', 'OpenCV', 'Scikit-learn', 'Pytorch Geometric', 'Gaussian Process', 'Deep Learning', 'Data Analysis'],
-  'LLMs & AI Tools': ['LLMs', 'Ollama', 'RAG', 'LangChain', 'n8n', 'Multi-Modal LLM', 'Prompt Engineering', 'Vector Databases', 'OpenAI API', 'Hugging Face'],
-  'Autonomous Systems': ['Vehicle-to-Everything (V2X)', 'Collaborative Perception', 'PointPillars', 'OpenCOOD', 'Mixture of Experts (MoE)', 'Graph Attention Networks (GAT)', 'CARLA'],
+  'AI & ML': ['PyTorch', 'TensorFlow', 'Graph Neural Networks', 'Computer Vision', 'OpenCV', 'Scikit-learn', 'Data Analysis'],
+  'LLMs & AI Tools': ['LLMs', 'Ollama', 'RAG', 'LangChain', 'n8n', 'Multi-Modal LLM', 'Prompt Engineering', 'Vector Databases', 'Hugging Face'],
+  'Autonomous Systems': ['Vehicle-to-Everything (V2X)', 'Collaborative Perception', 'PointPillars', 'OpenCOOD', 'CARLA'],
   'Web & Cloud': ['Node.js', 'HTML', 'MongoDB', 'MySQL', 'AWS', 'GCP'],
   'Development Tools': ['Git', 'Docker', 'Jenkins', 'Linux'],
-  'Embedded Systems': ['IoT', 'MQTT', 'MODBUS', 'ROS', 'FreeRTOS', 'UOS', 'TCP/IP', 'Edge Computing', 'MCU', 'STMCore', 'WLED', 'Qt', 'RTOS', 'Embedded Linux'],
+  'Embedded Systems': ['IoT', 'MQTT', 'MODBUS', 'ROS', 'FreeRTOS', 'TCP/IP', 'MCU', 'STMCore', 'WLED', 'Qt', 'RTOS', 'Embedded Linux'],
   'Hardware & Electronics': ['Electronics', 'Signals', 'Modulation', 'Communication Protocols', 'Photogrammetry', 'Image Processing']
 };
 
@@ -321,7 +348,59 @@ const experiences = [
 ];
 
 
+const AppSkeleton = ({ isDarkMode }) => {
+  return (
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
+      <div className="max-w-6xl mx-auto px-4 py-24">
+        {/* Header Skeleton */}
+        <div className="flex items-center gap-6 p-8 rounded-2xl">
+          <Skeleton circle={true} height={112} width={112} />
+          <div className="flex-1">
+            <Skeleton height={30} width={`80%`} />
+            <Skeleton height={20} width={`60%`} />
+            <Skeleton height={20} width={`90%`} style={{ marginTop: '1rem' }} />
+          </div>
+        </div>
 
+        {/* Skills Skeleton */}
+        <div className="space-y-8 mt-12">
+          <div className="flex items-center justify-between mb-4">
+            <Skeleton height={30} width={200} />
+            <Skeleton height={30} width={100} />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="p-6 rounded-xl">
+                <Skeleton height={24} width={`50%`} style={{ marginBottom: '1rem' }} />
+                <div className="flex flex-wrap gap-2">
+                  <Skeleton height={30} width={80} />
+                  <Skeleton height={30} width={100} />
+                  <Skeleton height={30} width={120} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications Skeleton */}
+        <div className="mt-10">
+          <Skeleton height={40} width={300} style={{ marginBottom: '1.5rem' }} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="p-6 rounded-xl">
+                <Skeleton height={24} width={`50%`} style={{ marginBottom: '1rem' }} />
+                <div className="flex flex-wrap gap-2">
+                  <Skeleton height={30} width={`80%`} />
+                  <Skeleton height={30} width={`90%`} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
  
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -372,18 +451,14 @@ const Portfolio = () => {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${
-        isDarkMode ? 'bg-gray-900' : 'bg-white'
-      }`}>
-        <div className="relative">
-          <div className="w-20 h-20 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-          <div className="absolute inset-0 w-20 h-20 border-4 border-blue-300 border-t-transparent rounded-full animate-spin" style={{animationDelay: '0.1s', animationDirection: 'reverse'}}></div>
-        </div>
-      </div>
+      <SkeletonTheme baseColor={isDarkMode ? "#202020" : "#ebebeb"} highlightColor={isDarkMode ? "#444" : "#f5f5f5"}>
+        <AppSkeleton isDarkMode={isDarkMode} />
+      </SkeletonTheme>
     );
   }
 
   return (
+    <SkeletonTheme baseColor={isDarkMode ? "#202020" : "#ebebeb"} highlightColor={isDarkMode ? "#444" : "#f5f5f5"}>
     <div className={`min-h-screen transition-all duration-500 relative ${
       isDarkMode 
         ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white' 
@@ -515,8 +590,8 @@ const Portfolio = () => {
                   }`}>
                     MS Electrical and Information Technology @ KIT
                   </p>
-                  <div className="mb-4 h-8">
-                    <span className={`text-xl font-mono font-semibold ${
+                  <div className="mb-4 h-8 sm:h-auto">
+                    <span className={`text-lg sm:text-xl font-mono font-semibold ${
                       isDarkMode ? 'text-cyan-300' : 'text-blue-600'
                     }`}>
                       {typedText}
@@ -528,7 +603,7 @@ const Portfolio = () => {
                   <p className={`text-lg leading-relaxed ${
                     isDarkMode ? 'text-slate-200' : 'text-slate-700'
                   }`}>
-                    👋 AI/ML Engineer specializing in Embedded Systems, Graph Neural Networks and Autonomous Perception.
+                    👋 AI/ML Engineer specializing in Embedded Systems, Graph Neural Networks and Multi-Modal Perception.
                     Currently researching Multi-Modal models in technology at FZI, Germany.
                   </p>
                   
@@ -545,7 +620,7 @@ const Portfolio = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                      <span className="text-sm font-medium">🚗 Autonomous Perception</span>
+                      <span className="text-sm font-medium">🚗 Multi-Modal Perception</span>
                     </div>
                   </div>
                   </div>
@@ -902,6 +977,7 @@ const Portfolio = () => {
         </div>
       </main>
     </div>
+    </SkeletonTheme>
   );
 };
 
