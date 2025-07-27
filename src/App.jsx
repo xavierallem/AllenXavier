@@ -43,7 +43,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 
 // Create a component for technology logos
-const TechLogo = ({ name, isDarkMode }) => {
+const TechLogo = ({ name, isDarkMode, showText = false }) => {
   // Map of technology names to their icon components
   const iconMap = {
     'C': CIcon,
@@ -76,7 +76,6 @@ const TechLogo = ({ name, isDarkMode }) => {
     'Computer Vision': OpenCVIcon,
     'Collaborative Perception': GraphNeuralNeetwork,
     'HTML': HTML,
-    'MySQL': MySQL,
     'GCP': GCP,
     'Hugging Face': HuggingFace,
     'Scikit-learn': ScikitLearnIcon,
@@ -93,9 +92,14 @@ const TechLogo = ({ name, isDarkMode }) => {
 
   const IconComponent = iconMap[name];
 
+  // If no icon and not showing text, don't render
+  if (!IconComponent && !showText) {
+    return null;
+  }
+
   return (
     <div
-      className={`px-3 py-2 rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg flex items-center justify-center backdrop-blur-sm ${
+      className={`px-3 py-3 sm:px-4 sm:py-3 md:px-5 md:py-4 rounded-full transition-all duration-300 transform hover:scale-110 hover:shadow-lg flex items-center justify-center backdrop-blur-sm ${
         isDarkMode
           ? 'bg-white/10 text-blue-200 hover:bg-blue-500/30 border border-white/20'
           : 'bg-blue-100/70 text-blue-800 hover:bg-blue-200/80 border border-blue-300/50 shadow-md shadow-blue-100/50'
@@ -103,13 +107,13 @@ const TechLogo = ({ name, isDarkMode }) => {
       title={name}
     >
       {IconComponent ? (
-        <img src={IconComponent} alt={`${name} icon`} className="w-5 h-5" />
+        <>
+          <img src={IconComponent} alt={`${name} icon`} className={showText ? "w-6 h-6" : "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"} />
+          {showText && <span className="ml-2">{name}</span>}
+        </>
       ) : (
-        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current">
-          <path d="M12 2L13.09 8.26L19.35 7.18L18.27 13.44L24.49 12.35L23.4 18.61L17.14 19.69L18.22 13.43L12 14.52L10.91 8.26L4.65 9.34L5.73 3.08L-0.49 4.17L0.6 -2.09L6.86 -3.17L5.78 3.09L12 2Z" />
-        </svg>
+        <span className="text-sm font-medium">{name}</span>
       )}
-      <span className="hidden sm:inline ml-1">{name}</span>
     </div>
   );
 };
@@ -174,7 +178,7 @@ const experienceDetails = {
 
 const skillGroups = {
   'Core Technologies': ['Python', 'C++', 'PyTorch', 'Graph Neural Networks'],
-  'AI Specializations': ['LLMs', 'Computer Vision', 'Collaborative Perception', 'RAG'],
+  'AI Specializations': ['LLMs', 'Computer Vision', 'Collaborative Perception'],
   'Systems & Tools': ['Docker', 'Linux', 'Git', 'AWS', 'IoT', 'Edge Computing']
 };
 
@@ -515,7 +519,9 @@ const Portfolio = () => {
           
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white focus:outline-none"
+            className={`md:hidden focus:outline-none transition-colors duration-300 ${
+              isDarkMode ? 'text-white' : 'text-slate-800'
+            }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? 
@@ -562,6 +568,7 @@ const Portfolio = () => {
         )}
       </nav>
 
+
       <main className="pt-24 px-4 pb-12 relative z-10">
         <div className="max-w-6xl mx-auto">
           {activeSection === 'home' && (
@@ -595,7 +602,7 @@ const Portfolio = () => {
                       isDarkMode ? 'text-cyan-300' : 'text-blue-600'
                     }`}>
                       {typedText}
-                      <span className="animate-pulse text-blue-500">|</span>
+                      <span className="text-blue-500" style={{animation: 'pulse 3s ease-in-out 3'}}>|</span>
                     </span>
                   </div>
                   
@@ -658,7 +665,7 @@ const Portfolio = () => {
                       }`}>{category}</h4>
                       <div className="flex flex-wrap gap-2">
                         {skills.map(skill => (
-                          <TechLogo key={skill} name={skill} isDarkMode={isDarkMode} />
+                          <TechLogo key={skill} name={skill} isDarkMode={isDarkMode} showText={showAllSkills} />
                         ))}
                       </div>
                     </div>
@@ -1063,16 +1070,7 @@ const ExperienceCardResponsive = ({ exp, index, isVisible, isDarkMode }) => {
                   }`}>Skills & Technologies</h4>
                   <div className="flex flex-wrap gap-2">
                     {experienceDetails[exp.title].skills.map((skill) => (
-                      <span 
-                        key={skill} 
-                        className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 backdrop-blur-sm ${
-                          isDarkMode 
-                            ? 'bg-white/10 text-blue-200 hover:bg-blue-500/30 border border-white/20 hover:shadow-lg'
-                            : 'bg-blue-100/70 text-blue-800 hover:bg-blue-200/80 border border-blue-300/50 shadow-md shadow-blue-100/50 hover:shadow-lg'
-                        }`}
-                      >
-                        {skill}
-                      </span>
+                      <TechLogo key={skill} name={skill} isDarkMode={isDarkMode} showText={true} />
                     ))}
                   </div>
                 </div>
