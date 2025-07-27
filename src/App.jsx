@@ -406,6 +406,32 @@ const AppSkeleton = ({ isDarkMode }) => {
   );
 };
  
+// Custom hook for scroll-triggered animations
+const useScrollAnimation = () => {
+  const [visibleElements, setVisibleElements] = useState(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements(prev => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    );
+
+    // Observe timeline elements
+    const timelineElements = document.querySelectorAll('[data-timeline]');
+    timelineElements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return visibleElements;
+};
+
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isVisible, setIsVisible] = useState(false);
@@ -416,6 +442,7 @@ const Portfolio = () => {
   const [typingIndex, setTypingIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showAllSkills, setShowAllSkills] = useState(false);
+  const visibleElements = useScrollAnimation();
   
   const currentTitle = "AI/ML Engineer & Embedded Software Developer";
   
@@ -775,28 +802,36 @@ const Portfolio = () => {
           )}
 
           {activeSection === 'experience' && (
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden" data-timeline id="timeline-container">
               {/* Animated Background Pattern */}
               <div className="absolute inset-0 opacity-5">
                 <div className="absolute inset-0 particles"></div>
               </div>
               
-              {/* Enhanced Timeline */}
-              <div className={`absolute left-3 sm:left-8 top-0 w-2 h-full rounded-full overflow-hidden ${
+              {/* Animated Timeline Line */}
+              <div className={`absolute left-3 sm:left-8 top-0 w-2 rounded-full overflow-hidden transition-all duration-1000 ${
                 isDarkMode 
                   ? 'bg-gradient-to-b from-blue-500 via-cyan-500 to-purple-500 shadow-2xl shadow-blue-500/30' 
                   : 'bg-gradient-to-b from-blue-400 via-cyan-400 to-indigo-400 shadow-2xl shadow-blue-400/40'
-              }`}>
+              } ${visibleElements.has('timeline-container') || isVisible ? 'timeline-line-animated' : 'h-0'}`}
+              style={{ 
+                height: visibleElements.has('timeline-container') || isVisible ? '100%' : '0%',
+                animationDelay: '0.2s'
+              }}
+              >
                 <div className="absolute inset-0 animate-gradient bg-gradient-to-b from-transparent via-white/20 to-transparent"></div>
               </div>
+              
+              {/* Timeline Content */}
               <div className="space-y-8 sm:space-y-12 relative">
                 {experiences.map((exp, index) => (
                   <ExperienceCardResponsive
                     key={exp.title + exp.company}
                     exp={exp}
                     index={index}
-                    isVisible={isVisible}
+                    isVisible={visibleElements.has('timeline-container') || isVisible}
                     isDarkMode={isDarkMode}
+                    timelineId={`timeline-item-${index}`}
                   />
                 ))}
               </div>
@@ -989,33 +1024,50 @@ const Portfolio = () => {
 };
 
 // Responsive Experience Card Component
-const ExperienceCardResponsive = ({ exp, index, isVisible, isDarkMode }) => {
+const ExperienceCardResponsive = ({ exp, index, isVisible, isDarkMode, timelineId }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const delayClass = `delay-${Math.min(index * 100 + 200, 1000)}`;
+  const alternateDirection = index % 2 === 0 ? 'timeline-card-left' : 'timeline-card-right';
   
   return (
     <div 
-      className="relative pl-8 sm:pl-20 transition-transform cursor-pointer"
+      className={`relative pl-8 sm:pl-20 transition-transform cursor-pointer ${
+        isVisible ? alternateDirection : 'opacity-0'
+      } ${delayClass}`}
       onClick={() => setIsExpanded(!isExpanded)}
+      data-timeline
+      id={timelineId}
     >
+      {/* Animated Timeline Dot */}
       <div 
-        className={`absolute left-2.5 sm:left-7 w-4 h-4 rounded-full transform transition-all duration-500 animate-pulse ${
+        className={`absolute left-2.5 sm:left-7 w-5 h-5 rounded-full transform transition-all duration-500 z-10 ${
           isDarkMode 
-            ? 'bg-gradient-to-r from-blue-400 to-cyan-400 shadow-2xl shadow-blue-400/50'
-            : 'bg-gradient-to-r from-blue-500 to-cyan-500 shadow-2xl shadow-blue-500/40'
+            ? 'bg-gradient-to-r from-blue-400 to-cyan-400' 
+            : 'bg-gradient-to-r from-blue-500 to-cyan-500'
         } ${
-          isVisible ? 'scale-100' : 'scale-0'
-        }`}
-        style={{ animationDelay: `${index * 200}ms` }}
-      ></div>
+          isVisible ? 'timeline-dot-animated' : 'scale-0 opacity-0'
+        } ${delayClass}`}
+        style={{
+          boxShadow: isDarkMode 
+            ? '0 0 15px rgba(59, 130, 246, 0.5), 0 0 25px rgba(6, 182, 212, 0.3)'
+            : '0 0 15px rgba(59, 130, 246, 0.4), 0 0 25px rgba(6, 182, 212, 0.2)'
+        }}
+      >
+        {/* Inner dot for extra glow */}
+        <div className={`absolute inset-1 rounded-full ${
+          isDarkMode ? 'bg-white/80' : 'bg-white/90'
+        }`}></div>
+      </div>
+      
+      {/* Experience Card */}
       <div 
         className={`p-6 sm:p-8 rounded-2xl backdrop-blur-md transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${
           isDarkMode 
             ? 'bg-white/5 border border-white/10 hover:bg-white/10' 
             : 'bg-white/70 border border-blue-200/50 hover:bg-white/90 shadow-lg shadow-blue-100/30'
         } ${
-          isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
+          isVisible ? 'opacity-100' : 'opacity-0'
         }`}
-        style={{ animationDelay: `${index * 200}ms` }}
       >
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
           <div className="flex-1">
