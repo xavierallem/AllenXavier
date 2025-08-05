@@ -951,7 +951,9 @@ const Portfolio = () => {
                   isDarkMode ? 'text-blue-200' : 'text-blue-700'
                 }`}>2025 IEEE International Conference on Intelligent Transportation Systems (ITSC 2025)</p>
                 <a 
-                  href="#" 
+                  href="https://arxiv.org/abs/2507.19354" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 backdrop-blur-md font-medium ${
                      isDarkMode
                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white shadow-2xl shadow-blue-500/25'
