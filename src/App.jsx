@@ -119,51 +119,57 @@ const TechLogo = ({ name, isDarkMode, showText = false }) => {
 };
 
 const experienceDetails = {
-  "Thesis": {
-    skills: ["Deep Learning", "Graph Neural Networks", "PyTorch", "Python", "Collaborative Perception", "PointPillars", "OpenCOOD", "Vehicle-to-Everything (V2X)", "Mixture of Experts (MoE)", "Graph Attention Networks (GAT)"],
-    achievements: [
-    "Built end-to-end trainable system with MoE attention fusion for autonomous vehicle networks, validated on OPV2V dataset",
-    "Implemented Adaptive Grid Reduction with GAT for reducing bandwidth in V2X communication",
-  ]
-},
   "Research Assistant": {
-    skills: ["LLMS","Ollama","RAG","LangChain","Graph Neural Networks",  "Python","Pytorch Geometric", "Data Analysis"],
+    skills: ["Graph Neural Networks", "Multimodal LLMs", "LLaVA", "Qwen 2.5 VL", "RAG Systems", "Function Calling", "MCP Integration", "LangChain", "LoRA Fine-tuning", "Python", "PyTorch", "Pytorch Geometric", "Hugging Face", "Ollama", "Data Analysis"],
     achievements: [
-      "Created Multi-Modal LLM processing pipeline for UX evaluation and data analysis",
-      "Built GNN and Gaussian Process models for real-time pathogen prediction achieving 89% accuracy in <strong><u><a href='https://pathobot.de' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Pathobot</a></u></strong>",
-      "Built scalable ML pipelines with automated preprocessing and feature extraction",
+      "Architected Multimodal LLM system for automated website UX evaluation using Qwen 2.5 VL 8B and LLaVA, implementing RAG, function calling, and MCP integration to process 50+ website pages per evaluation cycle",
+      "Implemented LoRA fine-tuning on custom UX evaluation dataset, adapting models to WCAG standards and UX personas, achieving 15% improvement in UX assessment accuracy",
+      "Pioneered infectious disease spread prediction using Graph Neural Networks, processing 300,000+ patient combinations achieving 88% accuracy in epidemiological risk assessment for <strong><u><a href='https://pathobot.de' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Pathobot</a></u></strong> project",
+      "Built scalable ML pipelines with automated preprocessing and feature extraction"
+    ]
+  },
+  "Thesis": {
+    skills: ["Deep Learning", "Graph Neural Networks", "Mixture of Experts", "PyTorch", "Python", "Collaborative Perception", "PointPillars", "OpenCOOD", "Vehicle-to-Everything (V2X)", "Graph Attention Networks (GAT)", "CARLA", "Sensor Fusion", "LiDAR"],
+    achievements: [
+      "Developed EffiComm framework achieving 92% accuracy in autonomous vehicle V2V communication, published in IEEE ITSC 2025 conference proceedings",
+      "Reduced communication overhead from 11.64MB to 1.90MB (83.7% bandwidth optimization) using Graph Neural Networks and Mixture of Experts architecture",
+      "Implemented bandwidth-efficient perception sharing algorithms in CARLA simulation environment using OpenCooD framework for real-time coordination"
     ]
   },
   "Software Developer(WerkStudent)": {
-    skills: ["Embedded C/C++", "WLED", "STMCore", "Edge Computing", "IoT", "Electronics", "DSA", "RTOS"],
+    skills: ["Embedded C/C++", "ARM Cortex", "STM32", "ESP32", "FreeRTOS", "Edge AI", "TinyML", "WLED", "STMCore", "Edge Computing", "IoT", "Electronics", "DSA", "RTOS", "Power Management", "Real-time Systems", "Hardware-in-the-loop"],
     achievements: [
       "Developed RTOS firmware for <strong><u><a href='https://lixl.io' target='_blank' rel='noopener noreferrer' style='color: inherit;'>Lixl Aura</a></u></strong> and <strong><u><a href='https://www.leetdesk.com' target='_blank' rel='noopener noreferrer' style='color: inherit;'>LeetDesk</a></u></strong> with advanced task scheduling",
-      "Achieved 60% power consumption reduction through intelligent sleep mode optimization",
+      "Achieved 50x power optimization (1A to 20mA) through hardware-in-the-loop optimization serving 500+ devices in production",
+      "Implemented Edge AI solutions on ESP32/STM32 with FreeRTOS for real-time sensor processing and IoT device control",
       "Built robust communication protocols with error handling and packet verification for IoT networks"
     ]
   },
   "Software Developer(HiWI)": {
-    skills: ["Embedded Linux", "Docker", "Python", "Photogrammetry", "Image Processing"],
+    skills: ["Embedded Linux", "Docker", "Python", "Photogrammetry", "Image Processing", "Computer Vision", "OpenCV", "PyTorch", "Camera SDK", "Real-time Processing", "3D Mapping"],
     achievements: [
+      "Engineered Computer Vision system for construction ground obstacle detection achieving 98% terrain classification accuracy at 10-30 fps",
+      "Implemented Photogrammetry pipeline using PyTorch and Docker for 3D mapping in medium-scale robotic systems",
       "Built Linux device drivers using finite state machines for precise imaging device control",
-      "Developed PyTorch image processing pipeline with computer vision algorithms for feature detection",
-      "Created Docker deployment solutions with CI/CD pipelines for cross-platform consistency"
+      "Integrated Camera Interfaces and Real-Time Data Acquisition using sensor communication protocols on Embedded Linux"
     ]
   },
   "Associate Software Developer": {
-    skills: ["JavaScript", "Node.js", "MongoDB", "AWS", "Linux", "Git", "NLP"],
+    skills: ["JavaScript", "Node.js", "MongoDB", "AWS", "Linux", "Git", "NLP", "Natural Language Understanding", "Conversational AI", "Agile Development", "API Development", "Scalable Systems"],
     achievements: [
-      "Built intelligent chatbots with NLP techniques and conversation flow management",
-      "Developed Node.js/MongoDB backend with optimized data modeling for chatbot operations",
-      "Led agile teams delivering client solutions with automated testing and documentation"
+      "Developed 15 industry-specific intelligent chatbots achieving 97% conversation success rate serving thousands of daily active users across multiple business verticals",
+      "Built scalable AI Chatbot backend systems using Node.js serving 100,000+ concurrent users with Agile methodologies",
+      "Achieved 100ms API response times and 1000+ requests per second throughput for real-time communication systems",
+      "Implemented advanced NLP pipelines with Natural Language Understanding models, improving user engagement and automated customer service efficiency"
     ]
   },
   "Machine Learning Intern": {
-    skills: ["Python", "TensorFlow", "Data Analysis", "Edge Computing", "Electronics"],
+    skills: ["Python", "TensorFlow", "TinyML", "Edge AI", "Embedded Systems", "Data Analysis", "Edge Computing", "Electronics", "Wearable Technology", "Healthcare AI", "Power Optimization", "Real-time Processing"],
     achievements: [
-      "Optimized EdgeML models for wearables with efficient inference and memory management",
-      "Analyzed Parkinson's patient data using statistical methods and ML algorithms",
-      "Improved gait detection accuracy by 5% using ensemble learning techniques"
+      "Created Parkinson's disease gait analysis models achieving 90% accuracy in symptom detection, validated with 20 patient clinical trials using TensorFlow",
+      "Deployed Edge AI on knee-band wearable devices, providing real-time therapeutic feedback with low-latency model optimization for continuous patient monitoring",
+      "Optimized EdgeML models for wearable devices with focus on power efficiency and real-time processing constraints using TinyML",
+      "Analyzed Parkinson's patient data using statistical methods and ML algorithms, improving gait detection accuracy by 5% using ensemble learning techniques"
     ]
   },
   "Embedded Systems Developer": {
@@ -308,40 +314,40 @@ const projects = [
 
 const experiences = [
   {
-    title: "Thesis",
-    company: "FZI, Karlsruhe, Germany",
-    date: "Nov 2024 - May 2025",
-    description: "EffiComm: Bandwidth Efficient Multi Agent Communication"
+    title: "Research Assistant",
+    company: "FZI Research Centre, Karlsruhe, Germany",
+    date: "Mar 2024 - Present",
+    description: "Developing Graph Neural Networks and Gaussian Process models for Pathogen Detection. Architected Multimodal LLM system for automated website UX evaluation achieving 88% accuracy processing 300,000+ patient combinations."
   },
   {
-    title: "Research Assistant",
-    company: "FZI, Karlsruhe, Germany",
-    date: "Mar 2024 - Present",
-    description: "Developing Graph Neural Networks and Gaussian Process models for Pathogen Detection"
+    title: "Thesis",
+    company: "FZI Research Centre, Karlsruhe, Germany",
+    date: "Nov 2024 - May 2025",
+    description: "EffiComm: Bandwidth Efficient Multi Agent Communication. Achieving 92% accuracy in autonomous vehicle V2V communication, published in IEEE ITSC 2025. Reduced communication overhead by 83.7% using Graph Neural Networks and Mixture of Experts."
   },
   {
     title: "Software Developer(WerkStudent)",
     company: "Vanory, Karlsruhe, Germany",
     date: "Feb 2023 - Mar 2024",
-    description: "Developing Firmware and Device drivers in Embedded C/C++ & Edge Computing using WLED and STMCore"
+    description: "Developing Firmware and Device drivers in Embedded C/C++ & Edge Computing using WLED and STMCore. Achieved 50x power optimization serving 500+ devices with Edge AI solutions on ESP32/STM32."
   },
   {
     title: "Software Developer(HiWI)",
     company: "RITA Project, Karlsruhe, Germany",
     date: "Jan 2023 - Jan 2024",
-    description: "Developing Firmware and Device drivers in Embedded Linux for photogrammetry"
+    description: "Developing Firmware and Device drivers in Embedded Linux for photogrammetry. Engineered Computer Vision system achieving 98% accuracy for construction ground obstacle detection at 10-30 fps with PyTorch and Docker."
   },
   {
     title: "Associate Software Developer",
     company: "Gupshup, India, Mumbai",
     date: "Mar 2022 - Sep 2022",
-    description: "Developing Ai Chat Bots in NodeJS , Gupshup's custom scripting development platform in scrum and agile projects etc"
+    description: "Developing AI Chat Bots in NodeJS, Gupshup's custom scripting development platform in scrum and agile projects. Built 15 intelligent chatbots achieving 97% conversation success rate serving 100,000+ concurrent users with 100ms response times."
   },
   {
     title: "Machine Learning Intern",
     company: "Life Spark Technology, IIT Bombay, Mumbai",
     date: "Jan 2022 - Feb 2022",
-    description: "Analysing Data for Parkinson's affected patients, Creating and Deploying EdgeML Model for a wearable to reduce the Gaits."
+    description: "Analysing Data for Parkinson's affected patients, Creating and Deploying EdgeML Model for a wearable to reduce the Gaits. Achieved 90% accuracy in symptom detection validated with 20 patient clinical trials, deploying Edge AI on wearable devices with TinyML."
   },
   {
     title: "Embedded Systems Developer",
@@ -442,6 +448,7 @@ const Portfolio = () => {
   const [typingIndex, setTypingIndex] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [showAllSkills, setShowAllSkills] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const visibleElements = useScrollAnimation();
   
   const currentTitle = "AI/ML Engineer & Embedded Software Developer";
@@ -478,6 +485,21 @@ const Portfolio = () => {
   const handleSectionClick = (section) => {
     setActiveSection(section);
     setMobileMenuOpen(false);
+  };
+
+  // Function to handle resume download with temporary unavailable message
+  const handleResumeDownload = () => {
+    if (isDownloading) return; // Prevent multiple clicks
+
+    setIsDownloading(true);
+
+    // Show temporarily not available message
+    alert('Resume download is temporarily not available. Please check back later or contact me directly via email.');
+
+    // Reset button state after showing message
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 1000);
   };
 
   if (isLoading) {
@@ -779,22 +801,19 @@ const Portfolio = () => {
                   <Mail className="w-5 h-5" />
                   Email
                 </a>
-                <button 
-                  onClick={() => {
-                    // Create a temporary link to download resume
-                    const link = document.createElement('a');
-                    link.href = ResumeFile;
-                    link.download = 'Allen_Xavier_Arasan_Resume.pdf';
-                    link.click();
-                  }}
+                <button
+                  onClick={handleResumeDownload}
+                  disabled={isDownloading}
                   className={`flex items-center gap-2 px-6 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl backdrop-blur-md font-medium text-white ${
-                    isDarkMode
-                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-2xl shadow-blue-500/25'
-                      : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 shadow-2xl shadow-blue-500/25'
+                    isDownloading
+                      ? 'bg-gray-500 cursor-not-allowed opacity-70'
+                      : isDarkMode
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-2xl shadow-blue-500/25'
+                        : 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-400 hover:to-cyan-400 shadow-2xl shadow-blue-500/25'
                   }`}
                 >
-                  <Download className="w-5 h-5" />
-                  Resume
+                  <Download className={`w-5 h-5 ${isDownloading ? 'animate-spin' : ''}`} />
+                  {isDownloading ? 'Preparing...' : 'Resume'}
                 </button>
               </div>
             </div>
@@ -826,7 +845,7 @@ const Portfolio = () => {
               <div className="space-y-8 sm:space-y-12 relative">
                 {experiences.map((exp, index) => (
                   <ExperienceCardResponsive
-                    key={exp.title + exp.company}
+                    key={exp.title + exp.company + exp.date}
                     exp={exp}
                     index={index}
                     isVisible={visibleElements.has('timeline-container') || isVisible}
